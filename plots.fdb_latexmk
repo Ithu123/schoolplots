@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1780391497.60503 "/home/paulbaier/development/schoolplots/plots.tex" "plots.pdf" "plots" 1780391499.11039 0
-  "/home/paulbaier/development/schoolplots/plots.tex" 1780391497.21128 1331 f0d7e97cb4f0eee21ea632e27afdc497 ""
+["pdflatex"] 1780392809.86994 "/home/paulbaier/development/schoolplots/plots.tex" "plots.pdf" "plots" 1780392810.68996 0
+  "/home/paulbaier/development/schoolplots/plots.tex" 1780392809.65626 1538 ee1aed6d8a627d99866e1f836c19e153 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -127,8 +127,8 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1777593600 43785 66587115382950aca692b5f6e3c2fb74 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1779917298 4810472 34ed1f348af6ebdf14133cb21fccf7d7 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1779916795 3520865 f349d818673e1a9273432d168ed132f6 ""
-  "plots.aux" 1780391499.02628 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "plots.tex" 1780391497.21128 1331 f0d7e97cb4f0eee21ea632e27afdc497 ""
+  "plots.aux" 1780392810.64126 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "plots.tex" 1780392809.65626 1538 ee1aed6d8a627d99866e1f836c19e153 ""
   (generated)
   "plots.aux"
   "plots.log"

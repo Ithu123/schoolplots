@@ -7,6 +7,11 @@
 
 \begin{tikzpicture}
 \begin{axis}[
+    % HIER IST DIE NEUERUNG: 
+    % Du definierst das sichtbare Raster für die x-Achse manuell.
+    % Die y-Achse passt sich weiterhin automatisch an die Kurve an!
+    xmin=-3, xmax=4,
+    %
     % 1. Genau 1cm pro Einheit (2 Kästchen = 1cm)
     x=1cm, y=1cm,
     xtick distance=1,    
@@ -21,21 +26,21 @@
     %
     % VORLAGE FÜR WUNSCH 1: x-Label unter die Achse verschieben
     xlabel={$x$}, 
-    xlabel style={at={(current axis.right of origin)}, anchor=north east, xshift=-0.1cm, yshift=-0.1cm}, 
+    xlabel style={at={(current axis.right of origin)}, anchor=south, xshift=0.0cm, yshift=-0.0cm},    
     ylabel={$y$},
-    ylabel style={at={(current axis.above origin)}, anchor=east, xshift=-0.1cm},
+    ylabel style={at={(current axis.above origin)}, anchor=west, xshift=0.0cm, yshift= 0.0cm},
     %
     % VORLAGE FÜR WUNSCH 2: Graph bis an den Rand zeichnen
     enlargelimits=false, % Kein künstlicher weißer Puffer um den Graphen herum
-    % Lässt NUR die Achsenlinien mit den Pfeilen 0.5cm (1 Kästchen) über den Rand des Rasters hinausragen:
-    axis line style={->, shorten >=-0.5cm, shorten <=-0.5cm}, 
+    % Lässt NUR die Achsenlinien mit den Pfeilen 0.25cm über den Rand des Rasters hinausragen:
+    axis line style={->, shorten >=-0.25cm, shorten <=-0.25cm}, 
     %
     % Globale Einstellungen für die Kurve
     samples=150
 ]
 
-% Deine Funktion: Zeichnet exakt von Anfang bis Ende des Rasters
-\addplot[color=blue, very thick, domain=-2.5:2.5] {x^2 - 2};
+% Deine Funktion: Zeichnet nur von -2 bis 2, obwohl das Raster von -3 bis 4 geht!
+\addplot[color=blue, very thick, domain=-2:1.5] {x^3 - 2};
 
 \end{axis}
 \end{tikzpicture}
