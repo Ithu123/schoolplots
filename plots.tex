@@ -1,48 +1,86 @@
 \documentclass{article}
 \usepackage{tikz}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.15} 
+\pgfplotsset{compat=1.15} %
+
+% ============================================================
+% STEUERUNGSZENTRALE: Nur hier Werte ändern!
+% ============================================================
+
+% 1. Deine Funktionen
+\tikzset{ %
+    declare function={ %
+        f(\x) = \x^2 - 1;      % Erste Funktion (Parabel)
+        g(\x) = -0.5*\x + 2;   % Zweite Funktion (Gerade)
+    } %
+} %
+
+% 2. Sichtbares Raster für das KKS
+\def\rasterStartX{-4} %
+\def\rasterEndX{4}   %
+\def\rasterStartY{-3} %
+\def\rasterEndY{4}   %
+
+% 3. Text für die Beschriftungen (wird für Legende UND Direkt-Label genutzt)
+\def\labelNameA{$f(x)$} %
+\def\labelNameB{$g(x)$} %
+
+% ============================================================
+
 
 \begin{document}
 
 \begin{tikzpicture}
-\begin{axis}[
-    % HIER IST DIE NEUERUNG: 
-    % Du definierst das sichtbare Raster für die x-Achse manuell.
-    % Die y-Achse passt sich weiterhin automatisch an die Kurve an!
-    xmin=-3, xmax=4,
+\begin{axis}[ %
+    xmin=\rasterStartX, xmax=\rasterEndX, %
+    ymin=\rasterStartY, ymax=\rasterEndY, %
+    domain=\rasterStartX:\rasterEndX, %
     %
-    % 1. Genau 1cm pro Einheit (2 Kästchen = 1cm)
-    x=1cm, y=1cm,
-    xtick distance=1,    
-    ytick distance=1,
-    minor tick num=1,    
-    grid=both,           
-    major grid style={line width=.2pt,draw=gray!50},
-    minor grid style={line width=.1pt,draw=gray!20},
+    x=1cm, y=1cm, %
+    xtick distance=1, %
+    ytick distance=1, %
+    minor tick num=1, %
+    grid=both, %
+    major grid style={line width=.2pt,draw=gray!50}, %
+    minor grid style={line width=.1pt,draw=gray!20}, %
+    axis lines=middle, %
     %
-    % 2. Achsen in der Mitte
-    axis lines=middle,
+    xlabel={$x$}, %
+    xlabel style={at={(current axis.right of origin)}, anchor=south, xshift=0.0cm, yshift=-0.0cm}, %
+    ylabel={$y$}, %
+    ylabel style={at={(current axis.above origin)}, anchor=west, xshift=0.0cm, yshift= 0.0cm}, %
     %
-    % VORLAGE FÜR WUNSCH 1: x-Label unter die Achse verschieben
-    xlabel={$x$}, 
-    xlabel style={at={(current axis.right of origin)}, anchor=south, xshift=0.0cm, yshift=-0.0cm},    
-    ylabel={$y$},
-    ylabel style={at={(current axis.above origin)}, anchor=west, xshift=0.0cm, yshift= 0.0cm},
+    enlargelimits=false, %
+    axis line style={->, shorten >=-0.25cm, shorten <=-0.25cm}, %
     %
-    % VORLAGE FÜR WUNSCH 2: Graph bis an den Rand zeichnen
-    enlargelimits=false, % Kein künstlicher weißer Puffer um den Graphen herum
-    % Lässt NUR die Achsenlinien mit den Pfeilen 0.25cm über den Rand des Rasters hinausragen:
-    axis line style={->, shorten >=-0.25cm, shorten <=-0.25cm}, 
+    % --------------------------------------------------------
+    % AUTOMATISCHE LEGENDE: Hier wird sie eingestellt
+    % --------------------------------------------------------
+    legend pos=north west, % Position: north west (oben links), north east (oben rechts), etc.
+    legend cell align={left}, % Text in der Legende linksbündig
+    legend style={draw=gray!40, fill=white, font=\small}, % Dezenter Rahmen, weißer Hintergrund
     %
-    % Globale Einstellungen für die Kurve
-    samples=150
-]
+    samples=150 %
+] %
 
-% Deine Funktion: Zeichnet nur von -2 bis 2, obwohl das Raster von -3 bis 4 geht!
-\addplot[color=blue, very thick, domain=-2:1.5] {x^3 - 2};
+% ------------------------------------------------------------
+% DIE GRAPHEN
+% ------------------------------------------------------------
 
-\end{axis}
+% Graph 1: Funktion f(x) in Blau mit Label oben links am Graphen
+\addplot[color=blue, very thick] {f(x)} node[pos=0.4,  left] {$f(x)$}; %
+
+% Graph 2: Funktion g(x) in Rot mit Label unten links am Graphen
+\addplot[color=red, very thick] {g(x)} node[pos=0.8, below ] {$g(x)$}; %
+
+
+% ------------------------------------------------------------
+% LEGENDEN-EINTRÄGE (Übernimmt automatisch die Namen von oben)
+% ------------------------------------------------------------
+% Wenn du KEINE Legenden-Box willst, lösche einfach diese Zeile:
+% \legend{\labelNameA, \labelNameB} %
+
+\end{axis} %
 \end{tikzpicture}
 
 \end{document}
