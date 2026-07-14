@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{standalone}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.15} %
@@ -10,16 +10,16 @@
 % 1. Deine Funktionen
 \tikzset{ %
     declare function={ %
-        f(\x) = \x^2 - 1;      % Erste Funktion (Parabel)
-        g(\x) = -0.5*\x + 2;   % Zweite Funktion (Gerade)
+        f(\x) =0.5 *sin(0.5*pi*\x r);      % Erste Funktion (Parabel)
+        g(\x) =0.5 *cos(0.5*pi*\x r);   % Zweite Funktion (Gerade)
     } %
 } %
 
 % 2. Sichtbares Raster für das KKS
-\def\rasterStartX{-4} %
-\def\rasterEndX{4}   %
-\def\rasterStartY{-3} %
-\def\rasterEndY{4}   %
+\def\rasterStartX{0} %
+\def\rasterEndX{6.5}   %
+\def\rasterStartY{-1.5} %
+\def\rasterEndY{1.5}   %
 
 % 3. Text für die Beschriftungen (wird für Legende UND Direkt-Label genutzt)
 \def\labelNameA{$f(x)$} %
@@ -60,6 +60,9 @@
     legend cell align={left}, % Text in der Legende linksbündig
     legend style={draw=gray!40, fill=white, font=\small}, % Dezenter Rahmen, weißer Hintergrund
     %
+    % Für leere Achsen:
+    xticklabel=\empty, %
+    yticklabel=\empty, %
     samples=150 %
 ] %
 
